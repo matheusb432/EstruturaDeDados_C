@@ -1,0 +1,117 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct nodo {
+    int valor;
+    struct nodo* esq;
+    struct nodo* dir;
+};
+
+struct nodo* criarNovoNodo(int valor){
+    struct nodo* novoNodo = (struct nodo*)malloc(sizeof(struct nodo)); // Utilizando malloc para alocar espaco dinamicamente para o novo nodo.
+    novoNodo->valor = valor;   // Estabelecendo o novo nodo, definindo valor como a raiz desse nodo
+    novoNodo->esq = NULL;      // Ambos os filhos estao vazios, pois, pois nao foram inseridos valores neles ainda.
+    novoNodo->dir = NULL;
+    return novoNodo;
+}
+
+struct nodo* inserir(struct nodo* raizPtr, int valor){
+    if(raizPtr == NULL){
+        raizPtr = criarNovoNodo(valor);  // Caso a arvore esteja vazia, criar nodo na raiz.
+    }
+    else if(valor <= raizPtr->valor){
+        raizPtr->esq = inserir(raizPtr->esq,valor);
+    }
+    else if(valor > raizPtr->valor){
+        raizPtr->dir = inserir(raizPtr->dir,valor);
+    }
+    return raizPtr;
+}
+/*
+int busca(struct nodo* raizPtr, int valor){
+    if(raizPtr == NULL){
+        return 0;
+    }
+    else if(valor == raizPtr->valor){
+        return 1;
+    }
+    else if(valor < raizPtr->valor){  // A comparacao nao esta "<=" pois se o valor for igual ao valor da raiz, a condicao acima ja sera executada.
+        return busca(raizPtr->esq, valor);
+    }
+    else if(valor > raizPtr->valor){
+        return busca(raizPtr->dir, valor);   // Caso for menor, usar a recursividade, buscando pelos filhos da esquerda, e se for maior, buscar pelos filhos da direita.
+    }
+}
+*/
+void preOrdem(struct nodo* raizPtr){
+    if(raizPtr == NULL) return;
+    printf(" %d ", raizPtr->valor);
+    preOrdem(raizPtr->esq);
+    preOrdem(raizPtr->dir);
+}
+
+void emOrdem(struct nodo* raizPtr){
+    if(raizPtr == NULL) return;
+    emOrdem(raizPtr->esq);
+    printf(" %d ", raizPtr->valor);
+    emOrdem(raizPtr->dir);
+}
+
+
+void posOrdem(struct nodo* raizPtr){
+    if(raizPtr == NULL) return;
+    posOrdem(raizPtr->esq);
+    posOrdem(raizPtr->dir);
+    printf(" %d ", raizPtr->valor);
+}
+
+
+int main(){
+    struct nodo* raiz;
+    raiz = NULL;
+    int numValores, aux, c, i, j;
+    char space;
+    printf("Insira a quantidade de arvores que serao criadas: ");
+    scanf("%d", &c);
+    for(i=0;i<c;i++){
+        printf("\nInsira o tamanho da arvore: ");
+        scanf("%d", &aux);
+     //  for(j=0;j<aux;j++){
+            printf("\nInsira os valores dos nodos da arvore: ");
+            while(2 == scanf("%d%c", &numValores, &space)){
+                raiz = inserir(raiz,numValores);
+            if(space == '\n')
+               break;
+            }
+    //            }
+    //   raiz = inserir(raiz,numValores);
+        printf("\nCase %d:", i+1);
+        printf("\nPre.:");   preOrdem(raiz);
+        printf("\nIn..:");   emOrdem(raiz);
+        printf("\nPost:");   posOrdem(raiz);
+        printf("\n");
+    }
+      return 0;
+    }
+
+
+  /*  printf("Insira 12 valores para serem inseridos na arvore: ");
+    for(i=0;i<12;i++){
+        scanf("%d", &noh[i]);
+        raiz = inserir(raiz, noh[i]);
+    }*/
+ /*   if(busca(raiz,5) == 1){
+            printf("\n 5 achado \n");
+    }
+    if(busca(raiz,3) == 1){
+            printf("\n 3 achado \n");
+    }
+    else {
+        printf("Nenhum numero achado");
+    } */
+
+   /* for(i=0;i<3;i++){
+        aux =
+        printf("Nodo %d: %d", i, );
+    }*/
+

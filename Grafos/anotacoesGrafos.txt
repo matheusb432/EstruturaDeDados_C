@@ -1,0 +1,25 @@
+Conteúdo Teórico:
+
+-> Grafos são estruturas matemáticas que nos permite codificar relacionamentes entre pares de objetos.
+
+-> São representados como um conjunto de nós ( vértices ) conectados par a par por linhas ( arestas ).
+                                                             G = ( V , E )
+-> Número máximo de arestas em um grafo = n(n-1) caso o grafo for direcionado, e [n(n-1)]/2 caso não for direcionado ( pois não pode haver duas arestas na mesma direção )
+
+-> Um grafo com arestas demais é denso, enquanto um com poucas arestas eh escasso.
+
+-> Percurso (Walk): sequência de vértices onde cada par adjacente é conectado por uma aresta
+
+-> Caminho (Path): um percurso em qual nenhuma vertíce ( consequentemente, nenhuma aresta ) é repetida.
+
+-> Trilha (Trail): um percurso em qual nenhuma aresta é repetida.
+
+-> Logo, todo caminho e trilha são percursos, e todo caminho é uma trilha.
+
+-> Percurso fechado se começa e termina no mesmo vértice.
+
+-> Todo vértice é um nodo.
+
+-> Árvores binárias são grafos acíclicos e não direcionados.
+
+-> Toda árvore tambem é um grafo.

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1581358091 source:c:\users\usuário\desktop\ifce\s3\estrutura de dados\lista 02 ed\questao1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+
